@@ -35,3 +35,12 @@ def get_response(client, discussion):
     discussion.append({"role": "system", "content": message})
     
     return message, discussion
+
+def chatbot():
+    client, sys_prompt, discussion = init()
+    while True:
+        discussion = get_input(discussion, sys_prompt)
+        if discussion is None:
+            break
+        message, discussion = get_response(client, discussion)
+        print(f"Bot: {message}")
