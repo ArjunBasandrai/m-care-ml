@@ -20,11 +20,11 @@ def init():
         "Sad_Tearful": "Yes",
         "Irritable": "Yes",
         "Trouble_Sleeping": "Yes",
-        "Problems_Focusing": "No",
-        "Eating_Disorder": "Not at all",
+        "Problems_Focusing": "Yes",
+        "Eating_Disorder": "Yes",
         "Guilt": "Yes",
         "Problems_Bonding": "No",
-        "Suicide_Attempt": "Yes"
+        "Suicide_Attempt": "No"
     }
 
     return model, x_encoders, sample_data
@@ -45,7 +45,7 @@ def check(model, input_data, encoders):
     prediction = predict(model, input_data, encoders)
     if prediction == None:
         return None
-    return "Signs of depression detected" if prediction else "Not depressed"
+    return "Signs of depression detected" if prediction else "No signs of depression detected"
 
 model, encoders, data = init()
 print(check(model, data, encoders))
